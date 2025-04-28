@@ -1,0 +1,19 @@
+module encoder_4x2(y,v,i);
+  input [0:3]i;
+  output reg [0:1]y;
+  output reg v;
+  
+  always@(*)
+    begin
+      if(i==4'b0001 | i==4'b0010 | i==4'b0100 | i==4'b1000)
+    case(i)
+      4'b0001: {v,y}=3'b100;
+      4'b0010: {v,y}=3'b101;
+      4'b0100: {v,y}=3'b110;
+      4'b1000: {v,y}=3'b111;
+      default:$display("error");
+    endcase
+      else
+      {v,y}=3'b000;
+      end
+endmodule
