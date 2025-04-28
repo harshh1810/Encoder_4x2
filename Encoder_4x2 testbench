@@ -1,0 +1,21 @@
+module encode_4x2_tb();
+  reg [0:3]i;
+  wire [0:1]y;
+  wire v;
+  
+  encoder_4x2 uut (y,v,i);
+  
+  initial
+    begin 
+      $moniter("time=%d \t v=%b \t i=%b \t y=%b",$time,i,y,v);
+      i=4'b0001;
+      #5; i=4'b0011;
+      #5; i=4'b0010;
+      #5; i=4'b1000;
+    end
+  initial
+    begin
+      $dumpfile("dump.vcd");
+      $dumpvars(1);
+    end 
+endmodule
